@@ -4,31 +4,28 @@
 using namespace std;
 
 vector<int> parseInts(string str) {
-    vector<int> vec;
-    string data = "";
+	vector<int> value;
+    string temp = "";
 
-	for(int i=0; i< str.size(); i++){
-        // cout << str[i] << endl;
-        if(str[i] != ','){
-            data += str[i];
-        }else{
-            cout << data << " ";
-            vec.push_back(str[i]);
-            data = "";
+    for(int i=0; i<=str.size(); i++){
+        if(str[i] != ',') temp += str[i];
+        else{
+            value.push_back(stoi(temp));
+            temp = "";
         }
     }
-    return vec;
+    value.push_back(stoi(temp));
+    cout << endl << endl;
+    return value;
 }
 
 int main() {
     string str;
     cin >> str;
-
-    // int integers = parseInts(str);
+    // str = "23,44,56";
     vector<int> integers = parseInts(str);
-    for(int i = 0; i < integers.size(); i++) {
-        cout << integers[i] << "\n";
-    }
+
+    for(int i: integers) cout << i << endl;
     
     return 0;
 }
