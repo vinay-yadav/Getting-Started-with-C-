@@ -1,3 +1,8 @@
+/*
+For using lower bound vector must sorted.
+No. of occurence of elements doesn't work.
+*/
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -18,7 +23,10 @@ int main() {
     cin >> n;
     for (int i=0; i<n; i++){
         cin >> val;
+        
+        // Searching position of the element
         vector<int>::iterator low = lower_bound(v.begin(), v.end(), val);
+
         if (v[low - v.begin()] == val)
             cout << "Yes " << (low - v.begin()+1) << endl;
         else
