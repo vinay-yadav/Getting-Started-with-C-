@@ -3,6 +3,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+// Approach one: taking input as a sentence
 int main(){
     string str, temp;
 
@@ -12,10 +14,27 @@ int main(){
     for(int i=0; i<str.size(); i++){
         if(str[i] != ' '){
             // calculating the ASCII difference and converting to uppercase letter
-            cout << (char) (str[i]-32);
+            // as ASCII of ('c' - 'a' = 'C' - 'A')
+            cout << (char) ((str[i] - 'a') + 'A');
         }
         else{
             cout << endl;
         }
+    }
+}
+*/
+
+// Approach two: using cin
+int main(){
+    while(true){
+        string str;
+        cin >> str;
+
+        if(str.size() == 0) break;
+
+        for(int i=0; i<str.size(); i++)
+            cout << (char) ((str[i] - 'a') + 'A');
+
+        cout << endl;
     }
 }
