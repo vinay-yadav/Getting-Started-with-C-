@@ -1,3 +1,5 @@
+/* Linked list with push and pop operation */
+
 #include <bits/stdc++.h>
 using namespace std;
 
