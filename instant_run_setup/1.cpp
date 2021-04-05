@@ -65,6 +65,31 @@ bool recursionSearch(Node *head, int key){
 }
 
 
+/* Global queue for breadth for search */
+queue<Node *> maintainer;
+
+/* BFS Traversal*/
+void level_order_display(Node *head){
+	if(head == NULL) return;
+
+	maintainer.push(head);
+
+	cout << "BFS Traversal: ";
+	while(!maintainer.empty()){
+		Node *check = maintainer.front();
+		maintainer.pop();
+		cout << check->data << " ";
+
+		if(check->left) maintainer.push(check->left);
+		if(check->right) maintainer.push(check->right);
+	}
+	
+	cout << endl;
+
+	return;
+}
+
+
 int main(){	
 	Node *root = NULL;
 
@@ -75,8 +100,11 @@ int main(){
 	root = insertNode(root, 8);
 	root = insertNode(root, 12);
 
-	if(recursionSearch(root, 12))
-		cout << "in tree";
-	else
-		cout << "not in tree";
+	// if(recursionSearch(root, 12))
+	// 	cout << "in tree";
+	// else
+	// 	cout << "not in tree";
+
+	level_order_display(root);
+
 }
