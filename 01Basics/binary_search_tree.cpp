@@ -1,3 +1,10 @@
+/*
+DFS Traversal:
+(a) Inorder   (Left, Root, Right)
+(b) Preorder  (Root, Left, Right)
+(c) Postorder (Left, Right, Root)
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -89,6 +96,68 @@ void level_order_display(Node *head){
 	return;
 }
 
+/* DFS Inorder Traversal (LEFT PARENT RIGHT) */
+void dfs_inorder(Node *head){
+	if(head == NULL) return;
+
+	dfs_inorder(head->left);
+
+	cout << head->data << " ";
+
+	dfs_inorder(head->right);
+}
+
+
+/* DFS Pre-order Traversal (PARENT LEFT RIGHT) */
+
+/* Global stack */
+stack<Node *> pre;
+void dfs_preorder(Node *head){
+	pre.push(head);
+
+	cout << "DFS Pre-order: ";
+
+	while(!pre.empty()){
+		Node *check = pre.top();
+		pre.pop();
+
+		cout << check->data << " ";
+
+		if(check->right != NULL) pre.push(check->right);
+
+		if(check->left != NULL) pre.push(check->left);
+	}
+
+	cout << endl;
+}
+
+
+void recursivePreorder(Node *node)
+{
+    if (node == NULL)
+        return;
+  
+    /* first print data of node */
+    cout << node->data << " ";
+  
+    /* then recur on left sutree */
+    recursivePreorder(node->left);
+  
+    /* now recur on right subtree */
+    recursivePreorder(node->right);
+}
+
+
+void dfs_postorder(Node *head){
+	if(head == NULL) return;
+
+	dfs_postorder(head->left);
+
+	dfs_postorder(head->right);
+
+	cout << head->data << " ";
+}
+
 
 int main(){	
 	Node *root = NULL;
@@ -106,5 +175,17 @@ int main(){
 	// 	cout << "not in tree";
 
 	level_order_display(root);
+
+	cout << endl << "DFS Inorder: ";
+	dfs_inorder(root);
+
+	cout << endl << endl;
+	dfs_preorder(root);
+
+	cout << endl << "DFS Recursive Pre-order: ";
+	recursivePreorder(root);
+
+	cout << endl << endl << "DFS Post-Order: ";
+	dfs_postorder(root);
 
 }

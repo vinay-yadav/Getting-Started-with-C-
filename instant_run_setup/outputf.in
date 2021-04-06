@@ -1,1 +1,9 @@
 BFS Traversal: 15 10 20 8 12 25 
+
+DFS Inorder: 8 10 12 15 20 25 
+
+DFS Pre-order: 15 10 8 12 20 25 
+
+DFS Recursive Pre-order: 15 10 8 12 20 25 
+
+DFS Post-Order: 8 12 10 25 20 15 
